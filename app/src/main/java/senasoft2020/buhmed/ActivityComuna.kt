@@ -1,5 +1,6 @@
 package senasoft2020.buhmed
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,5 +17,8 @@ class ActivityComuna : AppCompatActivity() {
         textViewAppName.typeface = fontOpenSansBold
         textViewPregunta.typeface = fontOpenSansRegular
         buttonContinue.typeface = fontOpenSansExtraBold
+        buttonContinue.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 }

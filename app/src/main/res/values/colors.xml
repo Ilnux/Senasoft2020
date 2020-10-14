@@ -7,4 +7,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorRipple">#555555</color>
     <color name="textBlack">#333333</color>
+    <color name="ratePositive">#68B0AB</color>
+    <color name="rateNegative">#B0686B</color>
 </resources>
