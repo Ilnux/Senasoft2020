@@ -1,6 +1,7 @@
 package senasoft2020.buhmed
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -33,6 +35,9 @@ class LoginActivity : AppCompatActivity() {
         textViewMessage.typeface = fontOpenSansRegular
         buttonHuawei.setOnClickListener {
             logHuawei()
+        }
+        button.setOnClickListener {
+            logGoogle()
         }
     }
 
@@ -65,7 +70,10 @@ class LoginActivity : AppCompatActivity() {
 
         if (requestCode == CODIGOG) {
             val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
-            val cuenta = tarea.getResult(ApiException::class.java)
+            if (tarea.isSuccessful){
+                val cuenta = tarea.getResult(ApiException::class.java)
+                cambioAtividadG()
+            }
 
             if (cuenta != null) {
                 val credencial = GoogleAuthProvider.getCredential(cuenta.idToken, null)
@@ -86,13 +94,20 @@ class LoginActivity : AppCompatActivity() {
             val tarea = HuaweiIdAuthManager.parseAuthResultFromIntent(data)
             if (tarea.isSuccessful) {
                 val cuenta = tarea.result
-                cambioAtividad(cuenta)
+                cambioAtividadH(cuenta)
             }
         }
     }
 
 
-    fun cambioAtividad(cuenta: AuthHuaweiId) {
+    fun cambioAtividadg(cuenta: AuthHuaweiId) {
+        val intent = Intent(this, ActivityComuna::class.java)
+        intent.putExtra("cuenta", cuenta)
+        startActivity(intent)
+        finish()
+    }
+
+    fun cambioAtividadH(cuenta: AuthHuaweiId) {
         val intent = Intent(this, ActivityComuna::class.java)
         intent.putExtra("cuenta", cuenta)
         startActivity(intent)
