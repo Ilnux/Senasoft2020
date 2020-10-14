@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +18,8 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
+import kotlinx.android.synthetic.main.activity_comuna.*
+import kotlinx.android.synthetic.main.activity_comuna.textViewAppName
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -27,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-<<<<<<<<< Temporary merge branch 1
         val fontOpenSansRegular = Typeface.createFromAsset(assets, "fonts/Open-Sans-Regular.ttf")
         val fontOpenSansBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Bold.ttf")
         val fontOpenSansExtraBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Extra-Bold.ttf")
@@ -37,7 +39,8 @@ class LoginActivity : AppCompatActivity() {
         buttonHuawei.setOnClickListener {
             logHuawei()
         }
-        button.setOnClickListener {
+
+        sign_in_button.setOnClickListener {
             logGoogle()
         }
     }
@@ -69,23 +72,12 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        //GOOGLE
         if (requestCode == CODIGOG) {
             val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
             if (tarea.isSuccessful){
-                val cuenta = tarea.getResult(ApiException::class.java)
-                cambioAtividadG()
-            }
-
-            if (cuenta != null) {
-                val credencial = GoogleAuthProvider.getCredential(cuenta.idToken, null)
-
-                FirebaseAuth.getInstance().signInWithCredential(credencial).addOnCompleteListener {
-                    if (it.isSuccessful){
-                         Toast.makeText(this,"correo: ${cuenta.email}  ${cuenta.displayName}",Toast.LENGTH_LONG).show()
-                    }
-                    Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
-
-                }
+                val cuenta:GoogleSignInAccount? = tarea.getResult(ApiException::class.java)
+                cambioAtividadG(cuenta)
             }
         }
 
@@ -95,13 +87,20 @@ class LoginActivity : AppCompatActivity() {
             val tarea = HuaweiIdAuthManager.parseAuthResultFromIntent(data)
             if (tarea.isSuccessful) {
                 val cuenta = tarea.result
-                cambioAtividad(cuenta)
+                cambioAtividadH(cuenta)
             }
         }
     }
 
 
-    fun cambioAtividad(cuenta: AuthHuaweiId) {
+    fun cambioAtividadG(cuenta: GoogleSignInAccount?) {
+        val intent = Intent(this, ActivityComuna::class.java)
+        intent.putExtra("cuenta", cuenta)
+        startActivity(intent)
+        finish()
+    }
+
+    fun cambioAtividadH(cuenta: AuthHuaweiId) {
         val intent = Intent(this, ActivityComuna::class.java)
         intent.putExtra("cuenta", cuenta)
         startActivity(intent)
