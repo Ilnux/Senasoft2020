@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
@@ -39,8 +40,7 @@ class LoginActivity : AppCompatActivity() {
         buttonGoogle.setOnClickListener {
             logGoogle()
         }
-=========
->>>>>>>>> Temporary merge branch 2
+
     }
 
 
@@ -74,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
         if (requestCode == CODIGOG) {
             val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
             if (tarea.isSuccessful){
-                val cuenta:GoogleSignInAccount? = tarea.getResult(ApiException::class.java)
+                val cuenta: GoogleSignInAccount? = tarea.getResult(ApiException::class.java)
                 cambioAtividadG(cuenta)
             }
         }
