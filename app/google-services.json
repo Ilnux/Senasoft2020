@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "707246416801",
+    "firebase_url": "https://buhmed-5e521.firebaseio.com",
+    "project_id": "buhmed-5e521",
+    "storage_bucket": "buhmed-5e521.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707246416801:android:a9c77f5118b453c99e61e0",
+        "android_client_info": {
+          "package_name": "senasoft2020.buhmed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707246416801-b7qbp1r3dgh7i87od2bhb1c6nl581t4s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "senasoft2020.buhmed",
+            "certificate_hash": "9b258c4d7ceff4ebf303000648abe3b817e39292"
+          }
+        },
+        {
+          "client_id": "707246416801-22kr1eusk3r9ishuueso8tmqafl64mj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNLpzOZVCYKvUCM8oWayA-BDWZOYMAIcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707246416801-22kr1eusk3r9ishuueso8tmqafl64mj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
