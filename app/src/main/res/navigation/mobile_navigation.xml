@@ -6,20 +6,8 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="senasoft2020.buhmed.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="senasoft2020.buhmed.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="senasoft2020.buhmed.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_publicaciones"
+        android:name="senasoft2020.buhmed.ui.publicaciones.PublicacionesFragment"
+        android:label="@string/menu_publicaciones"
+        tools:layout="@layout/fragment_publicaciones" />
 </navigation>

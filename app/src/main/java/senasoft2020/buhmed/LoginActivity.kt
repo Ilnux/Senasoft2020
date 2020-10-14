@@ -24,7 +24,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)//8888
+        setContentView(R.layout.activity_login)
+        textViewAppName.typeface = AppSenasoft2020.fontOpenSansRegular
+        textViewWelcome.typeface = AppSenasoft2020.fontOpenSansRegular
+        textViewMessage.typeface = AppSenasoft2020.fontOpenSansRegular
     }
 
 
