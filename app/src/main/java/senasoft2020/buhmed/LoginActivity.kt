@@ -16,6 +16,7 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,9 +26,11 @@ class LoginActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        textViewAppName.typeface = AppSenasoft2020.fontOpenSansRegular
-        textViewWelcome.typeface = AppSenasoft2020.fontOpenSansRegular
-        textViewMessage.typeface = AppSenasoft2020.fontOpenSansRegular
+//        textViewAppName.typeface = AppSenasoft2020.fontOpenSansRegular
+//        textViewWelcome.typeface = AppSenasoft2020.fontOpenSansRegular
+//        textViewMessage.typeface = AppSenasoft2020.fontOpenSansRegular
+
+        logHuawei()
     }
 
 
@@ -57,22 +60,22 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == CODIGOG) {
-            val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
-            val cuenta = tarea.getResult(ApiException::class.java)
-
-            if (cuenta != null) {
-                val credencial = GoogleAuthProvider.getCredential(cuenta.idToken, null)
-
-                FirebaseAuth.getInstance().signInWithCredential(credencial).addOnCompleteListener {
-                    if (it.isSuccessful){
-                         Toast.makeText(this,"correo: ${cuenta.email}  ${cuenta.displayName}",Toast.LENGTH_LONG).show()
-                    }
-                    Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
-
-                }
-            }
-        }
+//        if (requestCode == CODIGOG) {
+//            val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
+//            val cuenta = tarea.getResult(ApiException::class.java)
+//
+//            if (cuenta != null) {
+//                val credencial = GoogleAuthProvider.getCredential(cuenta.idToken, null)
+//
+//                FirebaseAuth.getInstance().signInWithCredential(credencial).addOnCompleteListener {
+//                    if (it.isSuccessful){
+//                         Toast.makeText(this,"correo: ${cuenta.email}  ${cuenta.displayName}",Toast.LENGTH_LONG).show()
+//                    }
+//                    Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
+//
+//                }
+//            }
+//        }
 
 
         //HUAWEI
