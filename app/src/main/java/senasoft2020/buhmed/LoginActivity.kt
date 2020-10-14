@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
@@ -18,8 +17,6 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
-import kotlinx.android.synthetic.main.activity_comuna.*
-import kotlinx.android.synthetic.main.activity_comuna.textViewAppName
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -39,10 +36,11 @@ class LoginActivity : AppCompatActivity() {
         buttonHuawei.setOnClickListener {
             logHuawei()
         }
-
-        sign_in_button.setOnClickListener {
+        buttonGoogle.setOnClickListener {
             logGoogle()
         }
+=========
+>>>>>>>>> Temporary merge branch 2
     }
 
 
