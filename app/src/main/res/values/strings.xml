@@ -11,4 +11,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="img_default_desc">Descripción por defecto</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="login_message">Debes iniciar sesión para continuar</string>
 </resources>

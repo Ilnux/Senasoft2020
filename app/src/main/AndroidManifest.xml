@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:name=".AppSenasoft2020"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -11,9 +12,9 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".LoginActivity" android:theme="@drawable/splashscreen">
+        <activity android:name=".LoginActivity" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
