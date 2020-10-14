@@ -21,6 +21,7 @@
     <string name="nav_scan">Escanear QR</string>
     <string name="nav_perfil">Mi perfil</string>
     <string name="nav_publicaciones">Mis publicaciones</string>
+    <string name="comuna_pregunta">¿En cuál comuna vives?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

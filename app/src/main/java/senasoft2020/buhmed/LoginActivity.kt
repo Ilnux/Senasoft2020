@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+<<<<<<<<< Temporary merge branch 1
         val fontOpenSansRegular = Typeface.createFromAsset(assets, "fonts/Open-Sans-Regular.ttf")
         val fontOpenSansBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Bold.ttf")
         val fontOpenSansExtraBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Extra-Bold.ttf")
@@ -94,20 +95,13 @@ class LoginActivity : AppCompatActivity() {
             val tarea = HuaweiIdAuthManager.parseAuthResultFromIntent(data)
             if (tarea.isSuccessful) {
                 val cuenta = tarea.result
-                cambioAtividadH(cuenta)
+                cambioAtividad(cuenta)
             }
         }
     }
 
 
-    fun cambioAtividadg(cuenta: AuthHuaweiId) {
-        val intent = Intent(this, ActivityComuna::class.java)
-        intent.putExtra("cuenta", cuenta)
-        startActivity(intent)
-        finish()
-    }
-
-    fun cambioAtividadH(cuenta: AuthHuaweiId) {
+    fun cambioAtividad(cuenta: AuthHuaweiId) {
         val intent = Intent(this, ActivityComuna::class.java)
         intent.putExtra("cuenta", cuenta)
         startActivity(intent)
