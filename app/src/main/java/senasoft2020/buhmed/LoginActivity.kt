@@ -27,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-<<<<<<<<< Temporary merge branch 1
         val fontOpenSansRegular = Typeface.createFromAsset(assets, "fonts/Open-Sans-Regular.ttf")
         val fontOpenSansBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Bold.ttf")
         val fontOpenSansExtraBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Extra-Bold.ttf")
@@ -37,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         buttonHuawei.setOnClickListener {
             logHuawei()
         }
-        button.setOnClickListener {
+        buttonGoogle.setOnClickListener {
             logGoogle()
         }
     }
