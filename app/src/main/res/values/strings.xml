@@ -11,4 +11,14 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_publicaciones">Publicaciones</string>
+    <string name="menu_cuenta">Más recientes</string>
+    <string name="img_default_desc">Descripción por defecto</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="login_message">Debes iniciar sesión para continuar</string>
+    <string name="nav_recientes">Más recientes</string>
+    <string name="nav_votadas">Más votadas</string>
+    <string name="nav_scan">Escanear QR</string>
+    <string name="nav_perfil">Mi perfil</string>
+    <string name="nav_publicaciones">Mis publicaciones</string>
 </resources>
