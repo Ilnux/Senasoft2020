@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -21,16 +22,18 @@ import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-
+    val PROVEEDOR = "proveedor"
     val CODIGOH = 9999
     val CODIGOG = 7777
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         val fontOpenSansRegular = Typeface.createFromAsset(assets, "fonts/Open-Sans-Regular.ttf")
         val fontOpenSansBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Bold.ttf")
-        val fontOpenSansExtraBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Extra-Bold.ttf")
+        val fontOpenSansExtraBold =
+            Typeface.createFromAsset(assets, "fonts/Open-Sans-Extra-Bold.ttf")
         textViewAppName.typeface = fontOpenSansBold
         textViewWelcome.typeface = fontOpenSansRegular
         textViewMessage.typeface = fontOpenSansRegular
@@ -73,8 +76,14 @@ class LoginActivity : AppCompatActivity() {
         //GOOGLE
         if (requestCode == CODIGOG) {
             val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
-            if (tarea.isSuccessful){
+            if (tarea.isSuccessful) {
                 val cuenta: GoogleSignInAccount? = tarea.getResult(ApiException::class.java)
+
+                val pref = PreferenceManager.getDefaultSharedPreferences(this)
+                val guardar = pref.edit()
+                guardar.putString(PROVEEDOR,"google")
+                guardar.apply()
+
                 cambioAtividadG(cuenta)
             }
         }
@@ -85,6 +94,12 @@ class LoginActivity : AppCompatActivity() {
             val tarea = HuaweiIdAuthManager.parseAuthResultFromIntent(data)
             if (tarea.isSuccessful) {
                 val cuenta = tarea.result
+
+                val pref = PreferenceManager.getDefaultSharedPreferences(this)
+                val guardar = pref.edit()
+                guardar.putString(PROVEEDOR,"huawei")
+                guardar.apply()
+
                 cambioAtividadH(cuenta)
             }
         }
