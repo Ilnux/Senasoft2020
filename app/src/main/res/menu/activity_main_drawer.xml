@@ -30,7 +30,7 @@
                         android:icon="@drawable/ic_menu_perfil"
                         android:title="@string/nav_perfil"/>
                     <item
-                        android:id="nav_publicaciones"
+                        android:id="@+id/nav_publicaciones"
                         android:icon="@drawable/ic_menu_publicaciones"
                         android:title="@string/nav_publicaciones"/>
                 </group>
