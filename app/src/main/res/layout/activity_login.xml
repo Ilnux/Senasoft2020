@@ -2,72 +2,81 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout"
+    android:id="@+id/ConstraintLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryLight"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="64dp"
-        android:background="@color/colorPrimaryLight"
-        android:contentDescription="@string/img_default_desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/textViewAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryLight"
-        android:text="@string/app_name"
-        android:textColor="@color/textBlack"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-    <TextView
-        android:id="@+id/textViewWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@color/colorPrimaryLight"
-        android:text="@string/welcome"
-        android:textColor="@color/textBlack"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAppName" />
-
-    <TextView
-        android:id="@+id/textViewMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimaryLight"
-        android:text="@string/login_message"
-        android:textColor="@color/textBlack"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWelcome" />
-
-    <com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton
-        android:id="@+id/buttonHuawei"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ConstraintLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMessage">
-    </com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:background="@color/colorPrimaryLight"
+            android:contentDescription="@string/img_default_desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textViewAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/app_name"
+            android:textColor="@color/textBlack"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/welcome"
+            android:textColor="@color/textBlack"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAppName" />
+
+        <TextView
+            android:id="@+id/textViewMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimaryLight"
+            android:text="@string/login_message"
+            android:textColor="@color/textBlack"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewWelcome" />
+
+        <com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton
+            android:id="@+id/buttonHuawei"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMessage"></com.huawei.hms.support.hwid.ui.HuaweiIdAuthButton>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

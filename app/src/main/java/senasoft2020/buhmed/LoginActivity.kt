@@ -1,6 +1,7 @@
 package senasoft2020.buhmed
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,8 +27,14 @@ class LoginActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        val fontOpenSansRegular = Typeface.createFromAsset(assets, "fonts/Open-Sans-Regular.ttf")
+        val fontOpenSansBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Bold.ttf")
+        val fontOpenSansExtraBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Extra-Bold.ttf")
+        textViewAppName.typeface = fontOpenSansBold
+        textViewWelcome.typeface = fontOpenSansRegular
+        textViewMessage.typeface = fontOpenSansRegular
         buttonHuawei.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            logHuawei()
         }
     }
 
