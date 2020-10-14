@@ -27,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+<<<<<<<<< Temporary merge branch 1
         val fontOpenSansRegular = Typeface.createFromAsset(assets, "fonts/Open-Sans-Regular.ttf")
         val fontOpenSansBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Bold.ttf")
         val fontOpenSansExtraBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Extra-Bold.ttf")
@@ -35,6 +36,9 @@ class LoginActivity : AppCompatActivity() {
         textViewMessage.typeface = fontOpenSansRegular
         buttonHuawei.setOnClickListener {
             logHuawei()
+        }
+        button.setOnClickListener {
+            logGoogle()
         }
     }
 
@@ -65,22 +69,22 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == CODIGOG) {
-            val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
-            val cuenta = tarea.getResult(ApiException::class.java)
-
-            if (cuenta != null) {
-                val credencial = GoogleAuthProvider.getCredential(cuenta.idToken, null)
-
-                FirebaseAuth.getInstance().signInWithCredential(credencial).addOnCompleteListener {
-                    if (it.isSuccessful){
-                         Toast.makeText(this,"correo: ${cuenta.email}  ${cuenta.displayName}",Toast.LENGTH_LONG).show()
-                    }
-                    Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
-
-                }
-            }
-        }
+//        if (requestCode == CODIGOG) {
+//            val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
+//            val cuenta = tarea.getResult(ApiException::class.java)
+//
+//            if (cuenta != null) {
+//                val credencial = GoogleAuthProvider.getCredential(cuenta.idToken, null)
+//
+//                FirebaseAuth.getInstance().signInWithCredential(credencial).addOnCompleteListener {
+//                    if (it.isSuccessful){
+//                         Toast.makeText(this,"correo: ${cuenta.email}  ${cuenta.displayName}",Toast.LENGTH_LONG).show()
+//                    }
+//                    Toast.makeText(this,"Error",Toast.LENGTH_LONG).show()
+//
+//                }
+//            }
+//        }
 
 
         //HUAWEI

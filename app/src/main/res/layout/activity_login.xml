@@ -86,5 +86,13 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonHuawei" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="126dp"
+        android:layout_height="40dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="576dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
