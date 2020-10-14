@@ -15,12 +15,13 @@
     <string name="menu_cuenta">Más recientes</string>
     <string name="img_default_desc">Descripción por defecto</string>
     <string name="welcome">Bienvenido</string>
-    <string name="login_message">Debes iniciar sesión para continuar</string>
+    <string name="login_message">Por favor, ingresa a tu cuenta</string>
     <string name="nav_recientes">Más recientes</string>
     <string name="nav_votadas">Más votadas</string>
     <string name="nav_scan">Escanear QR</string>
     <string name="nav_perfil">Mi perfil</string>
     <string name="nav_publicaciones">Mis publicaciones</string>
+    <string name="comuna_pregunta">¿En cuál comuna vives?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
