@@ -19,6 +19,7 @@ import com.huawei.hms.hmsscankit.ScanUtil
 import com.huawei.hms.ml.scan.HmsScan
 import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import kotlinx.android.synthetic.main.activity_main.*
+import senasoft2020.buhmed.LaunchScannerActivity
 import senasoft2020.buhmed.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,45 +52,13 @@ class ScanFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_scan, container, false)
         val buttonScan: Button = view.findViewById(R.id.buttonOpenScaner)
-        buttonScan.setOnClickListener{_ -> newViewBtnClick()}
+        buttonScan.setOnClickListener{
+            startActivity((Intent(context, LaunchScannerActivity::class.java)))
+        }
         return view
     }
 
-    private fun newViewBtnClick() {
-        val list = arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
-        ActivityCompat.requestPermissions(requireActivity(), list, DEFINED_CODE)
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (grantResults.size < 2 || grantResults[0] != PackageManager.PERMISSION_GRANTED || grantResults[1] != PackageManager.PERMISSION_GRANTED) return
-        else if (requestCode == DEFINED_CODE) {
-            ScanUtil.startScan(activity, REQUEST_CODE_SCAN, HmsScanAnalyzerOptions.Creator().setHmsScanTypes(HmsScan.ALL_SCAN_TYPE).create())
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != Activity.RESULT_OK || data == null) {return}
-        else if (requestCode == REQUEST_CODE_SCAN) {
-            when (val obj: Parcelable? = data.getParcelableExtra(ScanUtil.RESULT)) {
-                is HmsScan -> {
-                    if (!TextUtils.isEmpty(obj.getOriginalValue())) {
-                        Toast.makeText(activity, obj.getOriginalValue(), Toast.LENGTH_SHORT).show()
-                    }
-                    return
-                }
-            }
-        }
-    }
-
     companion object {
-        private val DEFINED_CODE = 222
-        private val REQUEST_CODE_SCAN = 0X01
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

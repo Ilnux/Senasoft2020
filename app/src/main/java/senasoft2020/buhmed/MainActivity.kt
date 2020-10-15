@@ -36,12 +36,6 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.post_item.*
 
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        private val DEFINED_CODE = 222
-        private val REQUEST_CODE_SCAN = 0X01
-    }
-
     private val db = FirebaseFirestore.getInstance()
     private val USUARIO = "usuario"
     private val DOCUMENTOG = "perfilG"
