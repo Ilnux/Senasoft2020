@@ -41,7 +41,6 @@ class LaunchScannerActivity : AppCompatActivity() {
         else if (requestCode == DEFINED_CODE) {
             ScanUtil.startScan(this, REQUEST_CODE_SCAN, HmsScanAnalyzerOptions.Creator().setHmsScanTypes(
                 HmsScan.ALL_SCAN_TYPE).create())
-            finish()
         }
     }
 
@@ -52,7 +51,11 @@ class LaunchScannerActivity : AppCompatActivity() {
             when (val obj: Parcelable? = data.getParcelableExtra(ScanUtil.RESULT)) {
                 is HmsScan -> {
                     if (!TextUtils.isEmpty(obj.getOriginalValue())) {
-                        Toast.makeText(this, obj.getOriginalValue(), Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, VerPublicacionActivity::class.java)
+                        val result = obj.getOriginalValue()
+                        intent.putExtra("postId", result)
+                        startActivity(intent)
+                        finish()
                     }
                     return
                 }
