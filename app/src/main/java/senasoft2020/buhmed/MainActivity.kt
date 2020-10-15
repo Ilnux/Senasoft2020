@@ -25,9 +25,9 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import com.huawei.hms.hmsscankit.ScanUtil
-import com.huawei.hms.ml.scan.HmsScan
-import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
+//import com.huawei.hms.hmsscankit.ScanUtil
+//import com.huawei.hms.ml.scan.HmsScan
+//import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
