@@ -42,19 +42,6 @@ class ActivityComuna : AppCompatActivity() {
 
     }
 
-    //guadar datos de los users de huawei
-    fun datoshuawei() {
-        val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
-
-        db.collection(USUARIO).document(DOCUMENTOH).set(
-            hashMapOf(
-                "Nombre" to  infoH?.displayName+" "+infoH?.familyName,
-                "Correo" to infoH?.email
-            )
-        )
-
-        //Toast.makeText(this, "huawei ${infoH?.displayName}", Toast.LENGTH_SHORT).show()
-    }
 
     fun llenarSpiner() {
         val comunas = arrayListOf<String>(
@@ -93,7 +80,8 @@ class ActivityComuna : AppCompatActivity() {
                     if (pref.getString("proveedor", "no hay nada") == "google") {
                         val infoG: GoogleSignInAccount? =
                             intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
-                        db.collection(USUARIO).document().set(
+
+                        db.collection(USUARIO).document(infoG!!.email!!).set(
                             hashMapOf(
                                 "Nombre" to infoG?.displayName,
                                 "Correo" to infoG?.email,
