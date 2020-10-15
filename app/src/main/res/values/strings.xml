@@ -29,6 +29,13 @@
     <string name="crear_nombre_hint">Título del problema</string>
     <string name="crear_desc_hint">Descripción de problema (procura ser breve)</string>
     <string name="publicar">Publicar</string>
+    <string name="post_viewer_author">Nombre del autor:</string>
+    <string name="post_viewer_title">Título del problema</string>
+    <string name="post_viewer_category">Categoría del problema</string>
+    <string name="post_viewer_desc">Descripción del problema</string>
+    <string name="post_viewer_negative">-1</string>
+    <string name="post_viewer_positive">+1</string>
+    <string name="post_viewer_share">Compartir</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
