@@ -40,22 +40,22 @@ class ComunaActivity : AppCompatActivity() {
 
     fun llenarSpiner() {
         val comunas = arrayListOf<String>(
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16"
+            "1 - Popular",
+            "2 - Santa Cruz",
+            "3 - Manrique",
+            "4 - Aranjuez",
+            "5 - Castilla",
+            "6 - Doce de Octubre",
+            "7 - Robledo",
+            "8 - Villa Hermosa",
+            "9 - Buenos Aires",
+            "10 - La Candelaria",
+            "11 - Laureles, Estadio",
+            "12 - La Ámerica",
+            "13 - San Javier",
+            "14 - Poblado",
+            "15 - Guayabal",
+            "16 - Belén"
         )
         val arrayAdapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, comunas)
