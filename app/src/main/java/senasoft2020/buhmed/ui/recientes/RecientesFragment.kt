@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_recientes.*
 import senasoft2020.buhmed.Post
 import senasoft2020.buhmed.PostAdapter
 import senasoft2020.buhmed.R
+import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +43,10 @@ class RecientesFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
+        //val recyclerView: RecyclerView = requireView().findViewById(R.id.recyclerViewRecientes)
+
     }
 
     override fun onCreateView(
@@ -47,7 +55,8 @@ class RecientesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_recientes, container, false)
-
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewRecientes)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         val postList = ArrayList<Post>()
         db.collection("publicaciones").addSnapshotListener { snapshot, error ->
             if (error != null){
@@ -60,22 +69,6 @@ class RecientesFragment : Fragment() {
             }
             Log.d("documentos","${postList}")
         }
-
-//        val postList = ArrayList<Post>()
-//        db.collection("publicaciones").whereEqualTo("Categoria", "Movilidad").get()
-//            .addOnSuccessListener {
-//                for (documento in it) {
-//                    val publicaciones = documento.toObject(Post::class.java)
-//                    postList.add(publicaciones)
-//
-//                }
-//                Log.d("doc", "${postList}")
-//                Log.d("doc", "${postList[0].Titulo}")
-//            }
-
-
-        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewRecientes)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         val adapter = PostAdapter(postList)
         recyclerView.adapter = adapter
         return view
