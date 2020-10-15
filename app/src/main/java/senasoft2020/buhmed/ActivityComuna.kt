@@ -24,6 +24,8 @@ class ActivityComuna : AppCompatActivity() {
     private val USUARIO = "usuario"
     private val DOCUMENTOG = "perfilG"
     private val DOCUMENTOH = "perfilH"
+    val PROVEEDOR = "proveedor"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,61 +38,10 @@ class ActivityComuna : AppCompatActivity() {
         textViewPregunta.typeface = fontOpenSansRegular
         buttonContinue.typeface = fontOpenSansExtraBold
 
-
-
-        buttonContinue.setOnClickListener {
-            validarProveedor()
-            //llenarSpiner()
-        }
+        llenarSpiner()
 
     }
 
-    //Cual proveedor ingresa
-    fun validarProveedor() {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        if (pref.getString("proveedor", "no hay nada") == "google") {
-            datosGoogle()
-        } else {
-            if (pref.getString("proveedor", "no hay nada") == "huawei") {
-                datoshuawei()
-            } else {
-                Toast.makeText(
-                    this,
-                    "${pref.getString("proveedor", "No hay datos")}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-    }
-
-    //guadar datos de los users de google
-    fun datosGoogle() {
-        val infoG: GoogleSignInAccount? =
-            intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
-
-        db.collection(USUARIO).document(DOCUMENTOG).set(
-            hashMapOf(
-                "Nombre" to infoG?.displayName,
-                "Correo" to infoG?.email
-            )
-        )
-        //Toast.makeText(this, "${infoG?.email}", Toast.LENGTH_SHORT).show()
-
-    }
-
-    //guadar datos de los users de huawei
-    fun datoshuawei() {
-        val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
-
-        db.collection(USUARIO).document(DOCUMENTOH).set(
-            hashMapOf(
-                "Nombre" to  infoH?.displayName+" "+infoH?.familyName,
-                "Correo" to infoH?.email
-            )
-        )
-
-        //Toast.makeText(this, "huawei ${infoH?.displayName}", Toast.LENGTH_SHORT).show()
-    }
 
     fun llenarSpiner() {
         val comunas = arrayListOf<String>(
@@ -122,11 +73,40 @@ class ActivityComuna : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                Toast.makeText(
-                    this@ActivityComuna,
-                    "Seleccionaste" + comunas[position],
-                    Toast.LENGTH_LONG
-                ).show()
+                buttonContinue.setOnClickListener {
+                    intentBotonComuna()
+                    val pref = PreferenceManager.getDefaultSharedPreferences(this@ActivityComuna)
+
+                    if (pref.getString("proveedor", "no hay nada") == "google") {
+                        val infoG: GoogleSignInAccount? =
+                            intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
+                        db.collection(USUARIO).document().set(
+                            hashMapOf(
+                                "Nombre" to infoG?.displayName,
+                                "Correo" to infoG?.email,
+                                "Comuna" to comunas[position]
+                            )
+                        )
+                    } else {
+                        if (pref.getString("proveedor", "no hay nada") == "huawei") {
+                            val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
+
+                            db.collection(USUARIO).document(infoH!!.email).set(
+                                hashMapOf(
+                                    "Nombre" to infoH?.displayName + " " + infoH?.familyName,
+                                    "Correo" to infoH?.email,
+                                    "Comuna" to comunas[position]
+                                )
+                            )
+                        } else {
+                            Toast.makeText(
+                                this@ActivityComuna,
+                                "${pref.getString("proveedor", "No hay datos")}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
 
             }
 
@@ -134,6 +114,12 @@ class ActivityComuna : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         }
+    }
+
+    private fun intentBotonComuna() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
 

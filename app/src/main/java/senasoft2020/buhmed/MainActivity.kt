@@ -1,6 +1,7 @@
 package senasoft2020.buhmed
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.Menu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -13,10 +14,18 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.post_item.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val db = FirebaseFirestore.getInstance()
+    private val USUARIO = "usuario"
+    private val DOCUMENTOG = "perfilG"
+    private val DOCUMENTOH = "perfilH"
+    val PROVEEDOR = "proveedor"
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -49,12 +58,24 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        //textViewEmail.text = "hola"
+
         return true
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+
+    fun mostrarDatosMen() {
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        if (pref.getString(PROVEEDOR, null) == "google") {
+            if (DOCUMENTOG != null) {
+                db.collection(USUARIO).document(DOCUMENTOG).get().addOnSuccessListener {
+                    //txt_view_nombre.setText()
+                }
+            }
+        }
     }
 }
