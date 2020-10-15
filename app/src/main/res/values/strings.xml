@@ -40,6 +40,9 @@
     <string name="profile_email">usuario@email.com</string>
     <string name="profile_logout">Cerrar sesión</string>
     <string name="mis_publicaciones_title">Mis publicaciones</string>
+    <string name="scan_title">Escanear código QR.</string>
+    <string name="scan_msg">Puedes utilizar el escáner para encontrar facilmente una publicación de nuestra aplicación mediante su código QR.</string>
+    <string name="scan_button">Abrir escáner</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

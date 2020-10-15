@@ -28,4 +28,10 @@
         android:name="senasoft2020.buhmed.ui.mispublicaciones.MisPublicacionesFragment"
         android:label="@string/nav_publicaciones"
         tools:layout="@layout/fragment_mis_publicaciones" />
+
+    <fragment
+        android:id="@+id/nav_scan"
+        android:name="senasoft2020.buhmed.ui.scanqr.ScanFragment"
+        android:label="@string/nav_scan"
+        tools:layout="@layout/fragment_scan" />
 </navigation>
