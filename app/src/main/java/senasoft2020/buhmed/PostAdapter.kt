@@ -32,7 +32,7 @@ data class Post(val title: String, val desc: String, val rate: Int /*val idAutho
 class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
     class ViewHolder(view: View, context: Context): RecyclerView.ViewHolder(view) {
         fun bindItems(data: Post) {
-            val title: TextView = itemView.findViewById(R.id.textViewAuthorName)
+            val title: TextView = itemView.findViewById(R.id.textViewPostTitle)
             val desc: TextView = itemView.findViewById(R.id.textViewPostDesc)
             val rate: TextView = itemView.findViewById(R.id.textViewPostRate)
             val picture: ImageView = itemView.findViewById(R.id.imageViewPostPicture)
