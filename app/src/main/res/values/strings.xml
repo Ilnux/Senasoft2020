@@ -36,6 +36,9 @@
     <string name="post_viewer_negative">-1</string>
     <string name="post_viewer_positive">+1</string>
     <string name="post_viewer_share">Compartir</string>
+    <string name="profile_name">Nombre del usuario</string>
+    <string name="profile_email">usuario@email.com</string>
+    <string name="profile_logout">Cerrar sesión</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
