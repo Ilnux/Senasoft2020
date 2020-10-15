@@ -1,20 +1,13 @@
 package senasoft2020.buhmed
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import com.huawei.hms.support.hwid.result.AuthHuaweiId
-import kotlinx.android.synthetic.main.activity_comuna.*
 import kotlinx.android.synthetic.main.activity_crear.*
-import senasoft2020.buhmed.data.Publicaciones
 
 class CrearActivity : AppCompatActivity() {
     var titulo: String = ""
@@ -60,22 +53,19 @@ class CrearActivity : AppCompatActivity() {
                             "Titulo" to titulo,
                             "Categoria" to categoria,
                             "Descripcion" to descripcion
+
                         )
                     )
-//                    val listaublicaciones = mutableListOf<Publicaciones>()
-//                    db.collection("publicaciones").get().addOnSuccessListener { resultado->
-//                        for (documento in resultado){
+                    intentMain()
+//                    val listaublicaciones = ArrayList<Publicaciones>()
+//                    db.collection("publicaciones").whereEqualTo("Categoria", "Movilidad").get().addOnSuccessListener {
+//                        for (documento in it){
 //                            val publicaciones = documento.toObject(Publicaciones::class.java)
 //                            listaublicaciones.add(publicaciones)
-//                        }
 //
-//                        Log.d("Publicaciones","${listaublicaciones}")
-//                    }
-//                    val listaublicaciones = mutableListOf<Publicaciones>()
-//                    db.collection("publicaciones").whereEqualTo("Categoria", "Movilidad").get().addOnSuccessListener {
-//                        for (documentos in it){
-//                            Log.d("doc","${documentos.data}")
 //                        }
+//                        Log.d("doc","${listaublicaciones}")
+//                        Log.d("doc","${listaublicaciones[0].Titulo}")
 //                    }
 
                 }
@@ -85,5 +75,12 @@ class CrearActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         }
+    }
+
+
+    fun intentMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

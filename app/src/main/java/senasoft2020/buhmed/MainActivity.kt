@@ -1,12 +1,10 @@
 package senasoft2020.buhmed
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.Menu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,10 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.nav_header_main.*
-import kotlinx.android.synthetic.main.post_item.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,6 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
@@ -87,5 +84,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 
 }
