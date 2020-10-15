@@ -48,7 +48,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/bottomBar"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,8 +64,8 @@
 
                 <ImageView
                     android:id="@+id/ic_seguidad"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_seguridad"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -75,9 +75,9 @@
 
                 <ImageView
                     android:id="@+id/ic_movilidad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="64dp"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_movilidad"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -87,9 +87,9 @@
 
                 <ImageView
                     android:id="@+id/ic_ruido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="64dp"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_ruido"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -99,9 +99,9 @@
 
                 <ImageView
                     android:id="@+id/ic_basura"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="64dp"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_basura"
                     app:layout_constraintBottom_toBottomOf="parent"
