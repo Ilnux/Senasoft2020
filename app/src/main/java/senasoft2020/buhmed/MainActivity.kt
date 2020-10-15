@@ -16,8 +16,10 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.post_item.*
 
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private val DOCUMENTOG = "perfilG"
     private val DOCUMENTOH = "perfilH"
     val PROVEEDOR = "proveedor"
+    val CORREO = "correo"
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -61,7 +64,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        if (pref.getString(PROVEEDOR, null) == "google") {
+            val infoG: GoogleSignInAccount? =
+                intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
+            db.collection(USUARIO).document(pref.getString(CORREO,null)!!).get().addOnSuccessListener {
+                txt_view_nombre.text = it.getString("Nombre" as String)
+                txt_view_correo.text = it.getString("Correo" as String)
+            }
+        }else{
+            val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
+            db.collection(USUARIO).document(pref.getString(CORREO,null)!!).get().addOnSuccessListener {
+                txt_view_nombre.text = it.getString("Nombre" as String)
+                txt_view_correo.text = it.getString("Correo" as String)
 
+            }
+        }
         return true
     }
 
@@ -70,15 +88,4 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
-    fun mostrarDatosMen() {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        if (pref.getString(PROVEEDOR, null) == "google") {
-            if (DOCUMENTOG != null) {
-                db.collection(USUARIO).document(DOCUMENTOG).get().addOnSuccessListener {
-                    //txt_view_nombre.setText()
-                }
-            }
-        }
-    }
 }

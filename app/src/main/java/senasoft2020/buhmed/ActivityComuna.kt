@@ -24,6 +24,7 @@ class ActivityComuna : AppCompatActivity() {
     private val USUARIO = "usuario"
     private val DOCUMENTOG = "perfilG"
     private val DOCUMENTOH = "perfilH"
+    val CORREO = "correo"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +79,9 @@ class ActivityComuna : AppCompatActivity() {
                     if (pref.getString("proveedor", "no hay nada") == "google") {
                         val infoG: GoogleSignInAccount? =
                             intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
+                        val guardar = pref.edit()
+                        guardar.putString(CORREO, infoG?.email)
+                        guardar.apply()
 
                         db.collection(USUARIO).document(infoG!!.email!!).set(
                             hashMapOf(
@@ -89,6 +93,9 @@ class ActivityComuna : AppCompatActivity() {
                     } else {
                         if (pref.getString("proveedor", "no hay nada") == "huawei") {
                             val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
+                            val guardar = pref.edit()
+                            guardar.putString(CORREO, infoH?.email)
+                            guardar.apply()
 
                             db.collection(USUARIO).document(infoH!!.email).set(
                                 hashMapOf(
