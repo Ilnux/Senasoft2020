@@ -35,6 +35,7 @@ class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.V
             val title: TextView = itemView.findViewById(R.id.textViewPostTitle)
             val desc: TextView = itemView.findViewById(R.id.textViewPostDesc)
             val rate: TextView = itemView.findViewById(R.id.textViewPostRate)
+            val name: TextView = itemView.findViewById(R.id.textViewName)
             val picture: ImageView = itemView.findViewById(R.id.imageViewPostPicture)
             val card: CardView = itemView.findViewById(R.id.cardView)
             val qr: ImageView = itemView.findViewById(R.id.imageViewPostQR)

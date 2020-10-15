@@ -58,7 +58,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewPostDesc"
-            app:srcCompat="@android:mipmap/sym_def_app_icon" />
+            app:srcCompat="@drawable/default_picture" />
 
         <TextView
             android:id="@+id/textViewName"
