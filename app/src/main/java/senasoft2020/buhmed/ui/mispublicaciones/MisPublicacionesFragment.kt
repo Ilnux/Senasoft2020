@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import senasoft2020.buhmed.Post
+import senasoft2020.buhmed.PostAdapter
 import senasoft2020.buhmed.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,7 +39,16 @@ class MisPublicacionesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mis_publicaciones, container, false)
+        val view = inflater.inflate(R.layout.fragment_mis_publicaciones, container, false)
+        val postList = ArrayList<Post>()
+        postList.add(Post("Adlkalañ", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl.", 4))
+        postList.add(Post("Qa4sd4so", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl.", 0))
+        postList.add(Post("B2as2w2wl", "Buenas, muchas personas que viven en el barrio La Francia han estado dejando ultimamente sus bolsas de basura en el parque mbiental para ser recogidas", -174))
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewMisPublicaciones)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        val adapter = PostAdapter(postList)
+        recyclerView.adapter = adapter
+        return view
     }
 
     companion object {
