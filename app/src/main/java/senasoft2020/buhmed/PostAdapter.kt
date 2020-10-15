@@ -1,7 +1,7 @@
 package senasoft2020.buhmed
 
 import android.content.Context
-import android.graphics.Typeface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,19 +9,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import senasoft2020.buhmed.ui.votadas.VotadasFragment
 
 data class Post(val title: String, val desc: String, val rate: Int /*val idAuthor: String*/)
 
 class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
     class ViewHolder(view: View, context: Context): RecyclerView.ViewHolder(view) {
         fun bindItems(data: Post) {
-            val title: TextView = itemView.findViewById(R.id.textViewPostTitle)
+            val title: TextView = itemView.findViewById(R.id.textViewAuthorName)
             val desc: TextView = itemView.findViewById(R.id.textViewPostDesc)
             val rate: TextView = itemView.findViewById(R.id.textViewPostRate)
             val picture: ImageView = itemView.findViewById(R.id.imageViewPostPicture)
-
+            val card: CardView = itemView.findViewById(R.id.cardView)
             picture.clipToOutline = true
 
             title.text = data.title
@@ -34,6 +35,11 @@ class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.V
                 rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.rateNegative))
             } else {
                 rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.textBlack))
+            }
+
+            card.setOnClickListener {
+                val intent = Intent(itemView.context, VerPublicacionActivity::class.java)
+                itemView.context.startActivity(intent)
             }
 
             /*

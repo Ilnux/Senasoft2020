@@ -1,5 +1,6 @@
 package senasoft2020.buhmed.ui.votadas
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import senasoft2020.buhmed.Post
 import senasoft2020.buhmed.PostAdapter
 import senasoft2020.buhmed.R
+import senasoft2020.buhmed.VerPublicacionActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

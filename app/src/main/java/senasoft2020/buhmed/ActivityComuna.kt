@@ -24,8 +24,6 @@ class ActivityComuna : AppCompatActivity() {
     private val USUARIO = "usuario"
     private val DOCUMENTOG = "perfilG"
     private val DOCUMENTOH = "perfilH"
-    val PROVEEDOR = "proveedor"
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +40,19 @@ class ActivityComuna : AppCompatActivity() {
 
     }
 
+    //guadar datos de los users de huawei
+    fun datoshuawei() {
+        val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
+
+        db.collection(USUARIO).document(DOCUMENTOH).set(
+            hashMapOf(
+                "Nombre" to  infoH?.displayName+" "+infoH?.familyName,
+                "Correo" to infoH?.email
+            )
+        )
+
+        //Toast.makeText(this, "huawei ${infoH?.displayName}", Toast.LENGTH_SHORT).show()
+    }
 
     fun llenarSpiner() {
         val comunas = arrayListOf<String>(

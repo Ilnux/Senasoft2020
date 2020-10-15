@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textViewPostTitle"
+            android:id="@+id/textViewAuthorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -28,7 +28,7 @@
             android:id="@+id/textViewPostDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewPostTitle"
+            android:layout_below="@+id/textViewAuthorName"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl."
