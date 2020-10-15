@@ -9,74 +9,83 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="4dp">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textViewAuthorName"
+            android:id="@+id/textViewPostTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="Titulos alaaaaa"
             android:textColor="@color/textBlack"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewPostDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewAuthorName"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl."
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPostTitle" />
 
         <ImageView
             android:id="@+id/imageViewPostQR"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignRight="@id/textViewPostDesc"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_menu_scan" />
 
         <ImageView
             android:id="@+id/imageViewPostPicture"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_below="@id/textViewPostDesc"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/image_round"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPostDesc"
             app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewPostDesc"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/imageViewPostPicture"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="Andres jimenez"
             android:textColor="@color/textBlack"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewPostPicture"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPostDesc" />
 
         <TextView
             android:id="@+id/textViewPostRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewPostDesc"
-            android:layout_alignRight="@id/textViewPostDesc"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="+1"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPostDesc" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </RelativeLayout>
 </androidx.cardview.widget.CardView>

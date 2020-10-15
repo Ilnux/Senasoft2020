@@ -24,10 +24,10 @@ android {
     signingConfigs {
         config {
 
-            storeFile file('C:\\Users\\usuario\\Desktop\\Android\\BUHMED\\app\\key2.jks')
-            storePassword '021094'
-            keyPassword '021094'
-            keyAlias 'key2'
+            storeFile file('C:\\Users\\usuario\\AndroidStudioProjects\\Senasoft2020\\app\\key1.jks')
+            storePassword '102030'
+            keyPassword '102030'
+            keyAlias 'key1'
         }
     }
     buildTypes {
@@ -69,12 +69,13 @@ dependencies {
 
     //Huawei
     implementation 'com.huawei.agconnect:agconnect-core:1.4.0.300'
-    implementation 'com.huawei.hms:hwid:5.0.1.301'
+    implementation 'com.huawei.hms:hwid:5.0.3.301'
     implementation 'com.huawei.hms:scan:1.1.3.300'
 
     //Google
     implementation platform('com.google.firebase:firebase-bom:25.12.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.zxing:core:3.4.0'
 
     implementation 'com.google.firebase:firebase-auth:19.4.0'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'

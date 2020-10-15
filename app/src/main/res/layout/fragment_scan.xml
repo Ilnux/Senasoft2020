@@ -60,7 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewScanTitle"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/scan_anim" />
+            app:lottie_rawRes="@raw/scan" />
 
         <Button
             android:id="@+id/buttonOpenScaner"
