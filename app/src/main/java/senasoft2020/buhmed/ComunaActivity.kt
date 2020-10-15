@@ -8,18 +8,14 @@ import android.preference.PreferenceManager
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.view.get
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.activity_comuna.*
 import kotlinx.android.synthetic.main.activity_comuna.textViewAppName
 
-class ActivityComuna : AppCompatActivity() {
+class ComunaActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val USUARIO = "usuario"
     private val DOCUMENTOG = "perfilG"
@@ -74,7 +70,7 @@ class ActivityComuna : AppCompatActivity() {
             ) {
                 buttonContinue.setOnClickListener {
                     intentBotonComuna()
-                    val pref = PreferenceManager.getDefaultSharedPreferences(this@ActivityComuna)
+                    val pref = PreferenceManager.getDefaultSharedPreferences(this@ComunaActivity)
 
                     if (pref.getString("proveedor", "no hay nada") == "google") {
                         val infoG: GoogleSignInAccount? =
@@ -106,7 +102,7 @@ class ActivityComuna : AppCompatActivity() {
                             )
                         } else {
                             Toast.makeText(
-                                this@ActivityComuna,
+                                this@ComunaActivity,
                                 "${pref.getString("proveedor", "No hay datos")}",
                                 Toast.LENGTH_SHORT
                             ).show()

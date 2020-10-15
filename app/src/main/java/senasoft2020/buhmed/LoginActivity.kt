@@ -108,14 +108,14 @@ class LoginActivity : AppCompatActivity() {
 
 
     fun cambioAtividadG(cuenta: GoogleSignInAccount?) {
-        val intent = Intent(this, ActivityComuna::class.java)
+        val intent = Intent(this, ComunaActivity::class.java)
         intent.putExtra("cuenta", cuenta)
         startActivity(intent)
         finish()
     }
 
     fun cambioAtividadH(cuenta: AuthHuaweiId) {
-        val intent = Intent(this@LoginActivity, ActivityComuna::class.java)
+        val intent = Intent(this@LoginActivity, ComunaActivity::class.java)
         intent.putExtra("cuenta", cuenta)
         startActivity(intent)
         finish()
