@@ -77,12 +77,13 @@ class ComunaActivity : AppCompatActivity() {
                             intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
                         val guardar = pref.edit()
                         guardar.putString(CORREO, infoG?.email)
+                        guardar.putString("nombre", infoG?.displayName)
                         guardar.apply()
 
                         db.collection(USUARIO).document(infoG!!.email!!).set(
                             hashMapOf(
-                                "Nombre" to infoG?.displayName,
-                                "Correo" to infoG?.email,
+                                "Nombre" to infoG.displayName,
+                                "Correo" to infoG.email,
                                 "Comuna" to comunas[position]
                             )
                         )
@@ -91,6 +92,7 @@ class ComunaActivity : AppCompatActivity() {
                             val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
                             val guardar = pref.edit()
                             guardar.putString(CORREO, infoH?.email)
+                            guardar.putString("nombre", infoH?.displayName+" "+infoH?.familyName)
                             guardar.apply()
 
                             db.collection(USUARIO).document(infoH!!.email).set(
