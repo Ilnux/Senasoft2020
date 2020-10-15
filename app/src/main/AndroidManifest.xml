@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".VerPublicacionActivity" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".ActivityComuna" />
+        <activity android:name=".ComunaActivity" />
         <activity
             android:name=".CrearActivity"
             android:parentActivityName=".MainActivity"></activity>

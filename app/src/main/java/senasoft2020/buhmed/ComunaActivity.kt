@@ -8,24 +8,19 @@ import android.preference.PreferenceManager
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.view.get
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.activity_comuna.*
 import kotlinx.android.synthetic.main.activity_comuna.textViewAppName
 
-class ActivityComuna : AppCompatActivity() {
+class ComunaActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val USUARIO = "usuario"
     private val DOCUMENTOG = "perfilG"
     private val DOCUMENTOH = "perfilH"
-    val PROVEEDOR = "proveedor"
-
+    val CORREO = "correo"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,11 +70,14 @@ class ActivityComuna : AppCompatActivity() {
             ) {
                 buttonContinue.setOnClickListener {
                     intentBotonComuna()
-                    val pref = PreferenceManager.getDefaultSharedPreferences(this@ActivityComuna)
+                    val pref = PreferenceManager.getDefaultSharedPreferences(this@ComunaActivity)
 
                     if (pref.getString("proveedor", "no hay nada") == "google") {
                         val infoG: GoogleSignInAccount? =
                             intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
+                        val guardar = pref.edit()
+                        guardar.putString(CORREO, infoG?.email)
+                        guardar.apply()
 
                         db.collection(USUARIO).document(infoG!!.email!!).set(
                             hashMapOf(
@@ -91,6 +89,9 @@ class ActivityComuna : AppCompatActivity() {
                     } else {
                         if (pref.getString("proveedor", "no hay nada") == "huawei") {
                             val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
+                            val guardar = pref.edit()
+                            guardar.putString(CORREO, infoH?.email)
+                            guardar.apply()
 
                             db.collection(USUARIO).document(infoH!!.email).set(
                                 hashMapOf(
@@ -101,7 +102,7 @@ class ActivityComuna : AppCompatActivity() {
                             )
                         } else {
                             Toast.makeText(
-                                this@ActivityComuna,
+                                this@ComunaActivity,
                                 "${pref.getString("proveedor", "No hay datos")}",
                                 Toast.LENGTH_SHORT
                             ).show()

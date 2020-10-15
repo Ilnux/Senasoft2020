@@ -82,9 +82,8 @@ class LoginActivity : AppCompatActivity() {
                 guardar.apply()
 
                 cambioAtividadH(cuenta)
-            }else
+            } else
                 Toast.makeText(this, "No se conecto con huawei", Toast.LENGTH_SHORT).show()
-
 
 
         }
@@ -93,7 +92,6 @@ class LoginActivity : AppCompatActivity() {
         if (requestCode == CODIGOG) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             if (task.isSuccessful) {
-                Toast.makeText(this, "bien", Toast.LENGTH_SHORT).show()
                 val cuenta: GoogleSignInAccount? = task.getResult(ApiException::class.java)
 
                 val pref = PreferenceManager.getDefaultSharedPreferences(this)
@@ -110,14 +108,14 @@ class LoginActivity : AppCompatActivity() {
 
 
     fun cambioAtividadG(cuenta: GoogleSignInAccount?) {
-        val intent = Intent(this, ActivityComuna::class.java)
+        val intent = Intent(this, ComunaActivity::class.java)
         intent.putExtra("cuenta", cuenta)
         startActivity(intent)
         finish()
     }
 
     fun cambioAtividadH(cuenta: AuthHuaweiId) {
-        val intent = Intent(this@LoginActivity, ActivityComuna::class.java)
+        val intent = Intent(this@LoginActivity, ComunaActivity::class.java)
         intent.putExtra("cuenta", cuenta)
         startActivity(intent)
         finish()
