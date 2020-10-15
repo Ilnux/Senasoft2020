@@ -21,6 +21,10 @@ import kotlinx.android.synthetic.main.activity_comuna.textViewAppName
 
 class ActivityComuna : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
+    private val USUARIO = "usuario"
+    private val DOCUMENTOG = "perfilG"
+    private val DOCUMENTOH = "perfilH"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comuna)
@@ -41,7 +45,7 @@ class ActivityComuna : AppCompatActivity() {
 
     }
 
-
+    //Cual proveedor ingresa
     fun validarProveedor() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         if (pref.getString("proveedor", "no hay nada") == "google") {
@@ -59,22 +63,33 @@ class ActivityComuna : AppCompatActivity() {
         }
     }
 
-
+    //guadar datos de los users de google
     fun datosGoogle() {
         val infoG: GoogleSignInAccount? =
             intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
 
-        //db.collection("usuario").document("")
+        db.collection(USUARIO).document(DOCUMENTOG).set(
+            hashMapOf(
+                "Nombre" to infoG?.displayName,
+                "Correo" to infoG?.email
+            )
+        )
+        //Toast.makeText(this, "${infoG?.email}", Toast.LENGTH_SHORT).show()
 
-
-        Toast.makeText(this, "huawei ${infoG?.displayName}", Toast.LENGTH_SHORT).show()
     }
 
-
+    //guadar datos de los users de huawei
     fun datoshuawei() {
         val infoH = intent.extras?.getParcelable<AuthHuaweiId>("cuenta")
 
-        Toast.makeText(this, "huawei ${infoH?.displayName}", Toast.LENGTH_SHORT).show()
+        db.collection(USUARIO).document(DOCUMENTOH).set(
+            hashMapOf(
+                "Nombre" to  infoH?.displayName+" "+infoH?.familyName,
+                "Correo" to infoH?.email
+            )
+        )
+
+        //Toast.makeText(this, "huawei ${infoH?.displayName}", Toast.LENGTH_SHORT).show()
     }
 
     fun llenarSpiner() {
