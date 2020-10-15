@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_recientes">
 
     <fragment
-        android:id="@+id/nav_publicaciones"
-        android:name="senasoft2020.buhmed.ui.publicaciones.PublicacionesFragment"
-        android:label="@string/menu_publicaciones"
-        tools:layout="@layout/fragment_publicaciones" />
+        android:id="@+id/nav_recientes"
+        android:name="senasoft2020.buhmed.ui.recientes.RecientesFragment"
+        android:label="@string/nav_recientes"
+        tools:layout="@layout/fragment_recientes" />
+
+    <fragment
+        android:id="@+id/nav_votadas"
+        android:name="senasoft2020.buhmed.ui.votadas.VotadasFragment"
+        android:label="@string/nav_votadas"
+        tools:layout="@layout/fragment_votadas" />
 </navigation>

@@ -18,8 +18,6 @@ import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import com.huawei.hms.support.hwid.service.HuaweiIdAuthService
-import kotlinx.android.synthetic.main.activity_comuna.*
-import kotlinx.android.synthetic.main.activity_comuna.textViewAppName
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -39,10 +37,10 @@ class LoginActivity : AppCompatActivity() {
         buttonHuawei.setOnClickListener {
             logHuawei()
         }
-
-        sign_in_button.setOnClickListener {
+        buttonGoogle.setOnClickListener {
             logGoogle()
         }
+
     }
 
 
@@ -76,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
         if (requestCode == CODIGOG) {
             val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
             if (tarea.isSuccessful){
-                val cuenta:GoogleSignInAccount? = tarea.getResult(ApiException::class.java)
+                val cuenta: GoogleSignInAccount? = tarea.getResult(ApiException::class.java)
                 cambioAtividadG(cuenta)
             }
         }
