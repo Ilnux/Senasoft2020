@@ -1,8 +1,12 @@
 package senasoft2020.buhmed
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +16,9 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
 
 data class Post(
     var Titulo: String = "",
@@ -52,14 +59,13 @@ class PostAdapter(var list: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.
 //                intent.putExtra("titulo", title.text)
 //                intent.putExtra("descripcion", desc.text)
 //                intent.putExtra("rate", rate.text)
-//                intent.putExtra("categoria", data.Categoria)
-//                itemView.context.startActivity(intent)
+                intent.putExtra("categoria", data.Categoria)
+                itemView.context.startActivity(intent)
             }
 
             qr.setOnClickListener {
                 val intent = Intent(itemView.context, VerCodigoActivity::class.java)
-
-                intent.putExtra("postID", "Oe bien o no")
+                intent.putExtra("textoAConvertir", "Oe bien o no")
                 startActivity(itemView.context, intent, Bundle())
             }
 

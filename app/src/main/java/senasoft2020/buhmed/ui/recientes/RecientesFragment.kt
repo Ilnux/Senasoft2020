@@ -58,7 +58,6 @@ class RecientesFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_recientes, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewRecientes)
-        val textNum = view.findViewById<TextView>(R.id.textViewListSize)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         val postList = ArrayList<Post>()
         db.collection("publicaciones").addSnapshotListener { snapshot, error ->
@@ -70,15 +69,10 @@ class RecientesFragment : Fragment() {
                 val publicaciones = documentos.toObject(Post::class.java)
                 postList.add(publicaciones)
             }
-
             val adapter = PostAdapter(postList)
-            textNum.text = adapter.itemCount.toString()
             recyclerView.adapter = adapter
             Log.d("documentos", "${postList}")
         }
-
-
-
         return view
     }
 
