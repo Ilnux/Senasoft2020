@@ -49,14 +49,21 @@ class RecientesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_recientes, container, false)
 
         val postList = ArrayList<Post>()
-        db.collection("publicaciones").addSnapshotListener { snapshot, error ->
+        db.collection("publicaciones") .addSnapshotListener { snapshot, error ->
             if (error != null){
                 Log.e("error","${error.message}")
                 return@addSnapshotListener
             }
             for (documentos in snapshot!!){
                 val publicaciones = documentos.toObject(Post::class.java)
-                postList.add(publicaciones)
+                val myPost = Post()
+                myPost.Id = documentos.id
+                myPost.Autor = publicaciones.Autor
+                myPost.Categoria = publicaciones.Categoria
+                myPost.Descripcion = publicaciones.Descripcion
+                myPost.Rate = publicaciones.Rate
+                myPost.Titulo = publicaciones.Titulo
+                postList.add(myPost)
             }
             Log.d("documentos","${postList}")
         }

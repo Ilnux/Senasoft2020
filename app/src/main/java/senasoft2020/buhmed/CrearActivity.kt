@@ -4,14 +4,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.activity_crear.*
+
+data class ListaRate(var rate: String = "")
 
 class CrearActivity : AppCompatActivity() {
     var titulo: String = ""
@@ -93,4 +97,20 @@ class CrearActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
+//    fun obtenerContador(){
+//        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+//        val resultadoList = ArrayList<ListaRate>()
+//        db.collection("publicaciones")
+//            .whereEqualTo("Autor", "${pref.getString("correo", null)}").whereEqualTo("Categoria") .get()
+//            .addOnSuccessListener { resultado ->
+//                for (documento in resultado ){
+//                    val datos = documento.toObject(ListaRate::class.java)
+//                    resultadoList.add(datos)
+//                    Log.d("rate","${resultadoList[]}")
+//                }
+//
+//            }
+//    }
 }

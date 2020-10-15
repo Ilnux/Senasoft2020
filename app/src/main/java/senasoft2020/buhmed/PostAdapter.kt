@@ -28,6 +28,7 @@ import senasoft2020.buhmed.ui.votadas.VotadasFragment
 import java.lang.Exception
 
 data class Post(
+    var Id: String = "",
     var Titulo: String = "",
     var Categoria: String = "",
     var Descripcion: String = "",
@@ -38,6 +39,7 @@ data class Post(
 class PostAdapter(var list: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
     class ViewHolder(view: View, context: Context) : RecyclerView.ViewHolder(view) {
         fun bindItems(data: Post) {
+            val id: TextView = itemView.findViewById(R.id.textViewPostId)
             val title: TextView = itemView.findViewById(R.id.textViewPostTitle)
             val desc: TextView = itemView.findViewById(R.id.textViewPostDesc)
             val rate: TextView = itemView.findViewById(R.id.textViewPostRate)
@@ -47,6 +49,7 @@ class PostAdapter(var list: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.
             val qr: ImageView = itemView.findViewById(R.id.imageViewPostQR)
             picture.clipToOutline = true
 
+            id.text = data.Id
             title.text = data.Titulo
             desc.text = data.Descripcion
             rate.text = data.Rate.toString()
