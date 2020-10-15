@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewPostTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Titulos alaaaaa"
+            android:textColor="@color/textBlack"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPostDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewPostTitle"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl."
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/imageViewPostQR"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignRight="@id/textViewPostDesc"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:srcCompat="@drawable/ic_menu_scan" />
+
+        <ImageView
+            android:id="@+id/imageViewPostPicture"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/textViewPostDesc"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/image_round"
+            app:srcCompat="@android:mipmap/sym_def_app_icon" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewPostDesc"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/imageViewPostPicture"
+            android:text="Andres jimenez"
+            android:textColor="@color/textBlack"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewPostRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewPostDesc"
+            android:layout_alignRight="@id/textViewPostDesc"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="+1"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
