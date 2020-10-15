@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_recientes.*
+import org.w3c.dom.Text
 import senasoft2020.buhmed.Post
 import senasoft2020.buhmed.PostAdapter
 import senasoft2020.buhmed.R
@@ -56,21 +58,27 @@ class RecientesFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_recientes, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewRecientes)
+        val textNum = view.findViewById<TextView>(R.id.textViewListSize)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         val postList = ArrayList<Post>()
         db.collection("publicaciones").addSnapshotListener { snapshot, error ->
-            if (error != null){
-                Log.e("error","${error.message}")
+            if (error != null) {
+                Log.e("error", "${error.message}")
                 return@addSnapshotListener
             }
-            for (documentos in snapshot!!){
+            for (documentos in snapshot!!) {
                 val publicaciones = documentos.toObject(Post::class.java)
                 postList.add(publicaciones)
             }
-            Log.d("documentos","${postList}")
+
+            val adapter = PostAdapter(postList)
+            textNum.text = adapter.itemCount.toString()
+            recyclerView.adapter = adapter
+            Log.d("documentos", "${postList}")
         }
-        val adapter = PostAdapter(postList)
-        recyclerView.adapter = adapter
+
+
+
         return view
     }
 

@@ -48,12 +48,12 @@ class PostAdapter(var list: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.
 
             card.setOnClickListener {
                 val intent = Intent(itemView.context, VerPublicacionActivity::class.java)
-                intent.putExtra("nombreAutor", name.text)
-                intent.putExtra("titulo", title.text)
-                intent.putExtra("descripcion", desc.text)
-                intent.putExtra("rate", rate.text)
-                intent.putExtra("categoria", data.Categoria)
-                itemView.context.startActivity(intent)
+//                intent.putExtra("nombreAutor", name.text)
+//                intent.putExtra("titulo", title.text)
+//                intent.putExtra("descripcion", desc.text)
+//                intent.putExtra("rate", rate.text)
+//                intent.putExtra("categoria", data.Categoria)
+//                itemView.context.startActivity(intent)
             }
 
             qr.setOnClickListener {
