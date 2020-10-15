@@ -27,7 +27,7 @@ import com.huawei.hms.ml.scan.HmsScan
 import senasoft2020.buhmed.ui.votadas.VotadasFragment
 import java.lang.Exception
 
-data class Post(val title: String, val desc: String, val rate: Int /*val idAuthor: String*/)
+data class Post(var Titulo: String = "", var Categoria:String = "",var Descripcion:String = "")
 
 class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
     class ViewHolder(view: View, context: Context): RecyclerView.ViewHolder(view) {
@@ -40,17 +40,17 @@ class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.V
             val qr: ImageView = itemView.findViewById(R.id.imageViewPostQR)
             picture.clipToOutline = true
 
-            title.text = data.title
-            desc.text = data.desc
-            rate.text = data.rate.toString()
+            title.text = data.Titulo
+            desc.text = data.Categoria
+            rate.text = data.Descripcion.toString()
 
-            if (data.rate > 0) {
-                rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.ratePositive))
-            } else if (data.rate < 0) {
-                rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.rateNegative))
-            } else {
-                rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.textBlack))
-            }
+//            if (data.rate > 0) {
+//                rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.ratePositive))
+//            } else if (data.rate < 0) {
+//                rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.rateNegative))
+//            } else {
+//                rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.textBlack))
+//            }
 
             card.setOnClickListener {
                 val intent = Intent(itemView.context, VerPublicacionActivity::class.java)

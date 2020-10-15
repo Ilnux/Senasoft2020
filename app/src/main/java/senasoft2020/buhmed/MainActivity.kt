@@ -1,7 +1,5 @@
 package senasoft2020.buhmed
 
-import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -27,13 +25,12 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import com.huawei.hms.hmsscankit.ScanUtil
-import com.huawei.hms.ml.scan.HmsScan
-import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
+//import com.huawei.hms.hmsscankit.ScanUtil
+//import com.huawei.hms.ml.scan.HmsScan
+//import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
-import kotlinx.android.synthetic.main.post_item.*
 
 class MainActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
@@ -108,6 +105,7 @@ class MainActivity : AppCompatActivity() {
 
      */
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
@@ -134,5 +132,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
 
 }

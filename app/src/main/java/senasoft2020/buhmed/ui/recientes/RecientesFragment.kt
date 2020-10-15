@@ -1,14 +1,14 @@
 package senasoft2020.buhmed.ui.recientes
 
-import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_recientes.*
+import com.google.firebase.firestore.FirebaseFirestore
 import senasoft2020.buhmed.Post
 import senasoft2020.buhmed.PostAdapter
 import senasoft2020.buhmed.R
@@ -23,7 +23,12 @@ private const val ARG_PARAM2 = "param2"
  * Use the [RecientesFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
 class RecientesFragment : Fragment() {
+
+
+    val db = FirebaseFirestore.getInstance()
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -44,9 +49,31 @@ class RecientesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_recientes, container, false)
 
         val postList = ArrayList<Post>()
-        postList.add(Post("Queja consumo", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl.", 4))
-        postList.add(Post("Queja ruido", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl.", -10))
-        postList.add(Post("Basuras en el parque ambiental", "Buenas, muchas personas que viven en el barrio La Francia han estado dejando ultimamente sus bolsas de basura en el parque mbiental para ser recogidas", 100))
+        db.collection("publicaciones").addSnapshotListener { snapshot, error ->
+            if (error != null){
+                Log.e("error","${error.message}")
+                return@addSnapshotListener
+            }
+            for (documentos in snapshot!!){
+                val publicaciones = documentos.toObject(Post::class.java)
+                postList.add(publicaciones)
+            }
+            Log.d("documentos","${postList}")
+        }
+
+//        val postList = ArrayList<Post>()
+//        db.collection("publicaciones").whereEqualTo("Categoria", "Movilidad").get()
+//            .addOnSuccessListener {
+//                for (documento in it) {
+//                    val publicaciones = documento.toObject(Post::class.java)
+//                    postList.add(publicaciones)
+//
+//                }
+//                Log.d("doc", "${postList}")
+//                Log.d("doc", "${postList[0].Titulo}")
+//            }
+
+
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewRecientes)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         val adapter = PostAdapter(postList)
@@ -73,4 +100,6 @@ class RecientesFragment : Fragment() {
                 }
             }
     }
+
+
 }

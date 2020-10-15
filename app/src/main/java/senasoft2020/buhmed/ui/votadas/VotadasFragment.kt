@@ -43,8 +43,6 @@ class VotadasFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_votadas, container, false)
         val postList = ArrayList<Post>()
-        postList.add(Post("Queja consumo 222", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl.", 94))
-        postList.add(Post("Queja ruido 333", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus, ex in eleifend tempor, tortor ipsum dictum ipsum, eu sodales lacus ex at nisl.", 75))
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewVotadas)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         val adapter = PostAdapter(postList)
