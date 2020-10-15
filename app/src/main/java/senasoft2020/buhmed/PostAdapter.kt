@@ -27,10 +27,16 @@ import com.huawei.hms.ml.scan.HmsScan
 import senasoft2020.buhmed.ui.votadas.VotadasFragment
 import java.lang.Exception
 
-data class Post(var Titulo: String = "", var Categoria:String = "",var Descripcion:String = "")
+data class Post(
+    var Titulo: String = "",
+    var Categoria: String = "",
+    var Descripcion: String = "",
+    var Autor: String = "",
+    var Rate: Int = 0
+)
 
-class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
-    class ViewHolder(view: View, context: Context): RecyclerView.ViewHolder(view) {
+class PostAdapter(var list: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.ViewHolder>() {
+    class ViewHolder(view: View, context: Context) : RecyclerView.ViewHolder(view) {
         fun bindItems(data: Post) {
             val title: TextView = itemView.findViewById(R.id.textViewPostTitle)
             val desc: TextView = itemView.findViewById(R.id.textViewPostDesc)
@@ -42,8 +48,9 @@ class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.V
             picture.clipToOutline = true
 
             title.text = data.Titulo
-            desc.text = data.Categoria
-            rate.text = data.Descripcion.toString()
+            desc.text = data.Descripcion
+            rate.text = data.Rate.toString()
+            name.text = data.Autor
 
 //            if (data.rate > 0) {
 //                rate.setTextColor(ContextCompat.getColor(itemView?.context, R.color.ratePositive))
@@ -58,10 +65,10 @@ class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.V
                 itemView.context.startActivity(intent)
             }
 
-            qr.setOnClickListener{
-                    val intent = Intent(itemView.context, VerCodigoActivity::class.java)
-                    intent.putExtra("postID", "Oe bien o no")
-                    startActivity(itemView.context, intent, Bundle())
+            qr.setOnClickListener {
+                val intent = Intent(itemView.context, VerCodigoActivity::class.java)
+                intent.putExtra("postID", "Oe bien o no")
+                startActivity(itemView.context, intent, Bundle())
             }
 
             /*
@@ -71,7 +78,6 @@ class PostAdapter(var list: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.V
             */
         }
     }
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
