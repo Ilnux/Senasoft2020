@@ -79,10 +79,10 @@ class LoginActivity : AppCompatActivity() {
             if (tarea.isSuccessful) {
                 val cuenta: GoogleSignInAccount? = tarea.getResult(ApiException::class.java)
 
-                val pref = PreferenceManager.getDefaultSharedPreferences(this)
-                val guardar = pref.edit()
-                guardar.putString(PROVEEDOR,"google")
-                guardar.apply()
+//                val pref = PreferenceManager.getDefaultSharedPreferences(this)
+//                val guardar = pref.edit()
+//                guardar.putString(PROVEEDOR,"google")
+//                guardar.apply()
 
                 cambioAtividadG(cuenta)
             }
@@ -95,10 +95,10 @@ class LoginActivity : AppCompatActivity() {
             if (tarea.isSuccessful) {
                 val cuenta = tarea.result
 
-                val pref = PreferenceManager.getDefaultSharedPreferences(this)
-                val guardar = pref.edit()
-                guardar.putString(PROVEEDOR,"huawei")
-                guardar.apply()
+//                val pref = PreferenceManager.getDefaultSharedPreferences(this)
+//                val guardar = pref.edit()
+//                guardar.putString(PROVEEDOR,"huawei")
+//                guardar.apply()
 
                 cambioAtividadH(cuenta)
             }

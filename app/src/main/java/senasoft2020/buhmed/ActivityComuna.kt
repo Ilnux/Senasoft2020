@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_comuna.*
 import kotlinx.android.synthetic.main.activity_comuna.textViewAppName
 
 class ActivityComuna : AppCompatActivity() {
-
+    private val db = FirebaseFirestore.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comuna)
@@ -62,6 +62,9 @@ class ActivityComuna : AppCompatActivity() {
     fun datosGoogle() {
         val infoG: GoogleSignInAccount? =
             intent.extras?.getParcelable<GoogleSignInAccount>("cuenta")
+
+        //db.collection("usuario").document("")
+
 
         Toast.makeText(this, "huawei ${infoG?.displayName}", Toast.LENGTH_SHORT).show()
     }
