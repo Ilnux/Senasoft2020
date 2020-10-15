@@ -36,7 +36,7 @@ class ActivityComuna : AppCompatActivity() {
 
         buttonContinue.setOnClickListener {
             validarProveedor()
-            llenarSpiner()
+            //llenarSpiner()
         }
 
     }
@@ -78,7 +78,24 @@ class ActivityComuna : AppCompatActivity() {
     }
 
     fun llenarSpiner() {
-        val comunas = arrayListOf<String>("1", "2", "3")
+        val comunas = arrayListOf<String>(
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16"
+        )
         val arrayAdapter =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, comunas)
 
@@ -90,11 +107,12 @@ class ActivityComuna : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-//                Toast.makeText(
-//                    this@ActivityComuna,
-//                    "Seleccionaste" + comunas[position],
-//                    Toast.LENGTH_LONG
-//                ).show()
+                Toast.makeText(
+                    this@ActivityComuna,
+                    "Seleccionaste" + comunas[position],
+                    Toast.LENGTH_LONG
+                ).show()
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
