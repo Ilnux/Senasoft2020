@@ -37,6 +37,8 @@ class ActivityComuna : AppCompatActivity() {
         buttonContinue.setOnClickListener {
             validarProveedor()
             //llenarSpiner()
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
     }
