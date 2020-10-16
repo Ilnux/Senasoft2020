@@ -45,6 +45,8 @@
     <string name="scan_button">Abrir escáner</string>
     <string name="qr_viewer_title">Aquí tienes el código QR.</string>
     <string name="qr_viewer_msg">¡Compartelo con un familiar o un amigo para que pueda acceder facilmente a la publicación!</string>
+    <string name="powered_by"></string>
+    <string name="huawei_scan_kit">Powered by Huawei Scan Kit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
