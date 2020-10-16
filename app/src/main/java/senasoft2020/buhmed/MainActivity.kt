@@ -30,6 +30,7 @@ import com.google.firebase.ktx.Firebase
 //import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.huawei.hms.support.hwid.result.AuthHuaweiId
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : AppCompatActivity() {
