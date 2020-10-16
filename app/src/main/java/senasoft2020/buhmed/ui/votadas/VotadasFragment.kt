@@ -94,7 +94,7 @@ class VotadasFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 postList.sortByDescending { selector(it) }
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter
@@ -120,7 +120,7 @@ class VotadasFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 postList.sortByDescending { selector(it) }
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter
@@ -146,7 +146,7 @@ class VotadasFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 postList.sortByDescending { selector(it) }
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter
@@ -172,7 +172,7 @@ class VotadasFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 postList.sortByDescending { selector(it) }
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter

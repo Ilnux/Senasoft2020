@@ -57,7 +57,7 @@ class MisPublicacionesFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewMisPublicaciones)
         val pref = PreferenceManager.getDefaultSharedPreferences(context)
         val nombre = pref.getString("nombre", "No hay información")
-        Toast.makeText(context, nombre, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, nombre, Toast.LENGTH_SHORT).show()
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         db.collection("publicaciones").whereEqualTo("Autor", nombre).addSnapshotListener { snapshot, error ->
 
@@ -77,7 +77,7 @@ class MisPublicacionesFragment : Fragment() {
                 myPost.Titulo = publicaciones.Titulo
                 postList.add(myPost)
             }
-            Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
             val adapter = PostAdapter(postList)
             recyclerView.adapter = adapter
         }

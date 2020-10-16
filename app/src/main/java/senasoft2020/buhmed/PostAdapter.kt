@@ -66,6 +66,12 @@ class PostAdapter(var list: ArrayList<Post>) : RecyclerView.Adapter<PostAdapter.
                 startActivity(itemView.context, intent, Bundle())
             }
 
+//            name.setOnClickListener {
+//                val intent = Intent(itemView?.context, PerfilActivity::class.java)
+//                intent.putExtra("nombre", name.text)
+//                startActivity(itemView.context, intent, Bundle())
+//            }
+
             /*
             val pic = obtener foto de la cuenta
 

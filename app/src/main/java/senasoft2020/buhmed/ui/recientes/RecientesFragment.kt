@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -97,7 +98,7 @@ class RecientesFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter
             }
@@ -122,7 +123,7 @@ class RecientesFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter
             }
@@ -147,13 +148,14 @@ class RecientesFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter
             }
         }
         val icBasuras: ImageButton = view.findViewById(R.id.ic_basura)
         icBasuras.setOnClickListener {
+            alerta("Integración de mapas de basura en desarrollo SenaSoft SENA 2020 (filtrando por categoría basura...)")
             Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
             db.collection("publicaciones").whereEqualTo("Categoria", "Basuras").addSnapshotListener { snapshot, error ->
                 if (error != null){
@@ -172,12 +174,21 @@ class RecientesFragment : Fragment() {
                     myPost.Titulo = publicaciones.Titulo
                     postList.add(myPost)
                 }
-                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
                 val adapter = PostAdapter(postList)
                 recyclerView.adapter = adapter
             }
         }
         return view
+    }
+
+    private fun alerta(mensaje: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Un momento")
+        builder.setMessage(mensaje)
+        builder.setPositiveButton("Ok", null)
+        val dialogo: AlertDialog = builder.create()
+        dialogo.show()
     }
 
     companion object {

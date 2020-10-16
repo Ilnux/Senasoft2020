@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_profile.*
 import senasoft2020.buhmed.LoginActivity
 import senasoft2020.buhmed.R
@@ -48,6 +49,15 @@ class ProfileFragment : Fragment() {
         val imgPicture: ImageView = view.findViewById(R.id.imageViewProfilePicture)
         imgPicture.clipToOutline = true
         val btnCerraSesion: Button = view.findViewById(R.id.buttonLogOut)
+
+        val correo:TextView = view.findViewById(R.id.textViewEmail)
+        val nombre:TextView = view.findViewById(R.id.textViewNombre)
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(context)
+        nombre.text = pref.getString("nombre"," ")
+        correo.text = pref.getString("correo"," ")
+
+
 
         btnCerraSesion.setOnClickListener {
             val pref = PreferenceManager.getDefaultSharedPreferences(context)
