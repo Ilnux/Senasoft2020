@@ -17,14 +17,14 @@
     <string name="welcome">Bienvenido</string>
     <string name="login_message">Por favor, ingresa a tu cuenta</string>
     <string name="nav_recientes">Más recientes</string>
-    <string name="nav_votadas">Más votadas</string>
+    <string name="nav_votadas">Mejor valoradas</string>
     <string name="nav_scan">Escanear QR</string>
     <string name="nav_perfil">Mi perfil</string>
     <string name="nav_publicaciones">Mis publicaciones</string>
     <string name="comuna_pregunta">¿Cuál es tu comuna?</string>
     <string name="_continue">Continuar</string>
     <string name="recientes_titulo">Todas las publicaciones</string>
-    <string name="votadas_titulo">Publicaciones más votadas</string>
+    <string name="votadas_titulo">Publicaciones mejor valoradas</string>
     <string name="crear_title">Crear publicación</string>
     <string name="crear_nombre_hint">Título del problema</string>
     <string name="crear_desc_hint">Descripción de problema (procura ser breve)</string>
