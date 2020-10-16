@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import senasoft2020.buhmed.Post
@@ -47,12 +49,13 @@ class VotadasFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_votadas, container, false)
-        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewVotadas)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewVotadas)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        val postList = ArrayList<Post>()
-        db.collection("publicaciones").addSnapshotListener {snapshot, error ->
-            if (error != null) {
-                Log.e("error", "${error.message}")
+
+        var postList = ArrayList<Post>()
+        db.collection("publicaciones").addSnapshotListener { snapshot, error ->
+            if (error != null){
+                Log.e("error","${error.message}")
                 return@addSnapshotListener
             }
             for (documentos in snapshot!!) {
@@ -66,9 +69,114 @@ class VotadasFragment : Fragment() {
                 myPost.Titulo = publicaciones.Titulo
                 postList.add(myPost)
             }
-            postList.sortByDescending({selector(it)})
+            postList.sortByDescending { selector(it) }
             val adapter = PostAdapter(postList)
             recyclerView.adapter = adapter
+            Log.d("documentos", "${postList}")
+        }
+        val icSeguridad: ImageButton = view.findViewById(R.id.ic_seguridad)
+        icSeguridad.setOnClickListener {
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Seguridad").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                postList.sortByDescending { selector(it) }
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
+        }
+        val icMovilidad: ImageButton = view.findViewById(R.id.ic_movilidad)
+        icMovilidad.setOnClickListener {
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Movilidad").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                postList.sortByDescending { selector(it) }
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
+        }
+        val icRuido: ImageButton = view.findViewById(R.id.ic_ruido)
+        icRuido.setOnClickListener {
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Ruido").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                postList.sortByDescending { selector(it) }
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
+        }
+        val icBasuras: ImageButton = view.findViewById(R.id.ic_basura)
+        icBasuras.setOnClickListener {
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Basuras").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Filtrado.", Toast.LENGTH_SHORT).show()
+                postList.sortByDescending { selector(it) }
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
         }
         return view
     }
