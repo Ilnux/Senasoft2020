@@ -1,17 +1,26 @@
-package senasoft2020.buhmed.ui.votadas
+package senasoft2020.buhmed.ui.scanqr
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Parcelable
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import senasoft2020.buhmed.Post
-import senasoft2020.buhmed.PostAdapter
+import android.widget.Button
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.huawei.hms.hmsscankit.ScanUtil
+import com.huawei.hms.ml.scan.HmsScan
+import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
+import kotlinx.android.synthetic.main.activity_main.*
+import senasoft2020.buhmed.LaunchScannerActivity
 import senasoft2020.buhmed.R
-import senasoft2020.buhmed.VerPublicacionActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,10 +29,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [VotadasFragment.newInstance] factory method to
+ * Use the [ScanFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class VotadasFragment : Fragment() {
+class ScanFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -41,12 +50,11 @@ class VotadasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_votadas, container, false)
-        val postList = ArrayList<Post>()
-        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewVotadas)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        val adapter = PostAdapter(postList)
-        recyclerView.adapter = adapter
+        val view = inflater.inflate(R.layout.fragment_scan, container, false)
+        val buttonScan: Button = view.findViewById(R.id.buttonOpenScaner)
+        buttonScan.setOnClickListener{
+            startActivity((Intent(context, LaunchScannerActivity::class.java)))
+        }
         return view
     }
 
@@ -57,12 +65,12 @@ class VotadasFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment VotadasFragment.
+         * @return A new instance of fragment ScanFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            VotadasFragment().apply {
+            ScanFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

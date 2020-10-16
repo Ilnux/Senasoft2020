@@ -21,10 +21,30 @@
     <string name="nav_scan">Escanear QR</string>
     <string name="nav_perfil">Mi perfil</string>
     <string name="nav_publicaciones">Mis publicaciones</string>
-    <string name="comuna_pregunta">¿En cuál comuna vives?</string>
+    <string name="comuna_pregunta">¿Cuál es tu comuna?</string>
     <string name="_continue">Continuar</string>
-    <string name="recientes_titulo">Publicaciones más recientes</string>
+    <string name="recientes_titulo">Todas las publicaciones</string>
     <string name="votadas_titulo">Publicaciones más votadas</string>
+    <string name="crear_title">Crear publicación</string>
+    <string name="crear_nombre_hint">Título del problema</string>
+    <string name="crear_desc_hint">Descripción de problema (procura ser breve)</string>
+    <string name="publicar">Publicar</string>
+    <string name="post_viewer_author">Nombre del autor:</string>
+    <string name="post_viewer_title">Título del problema</string>
+    <string name="post_viewer_category">Categoría del problema</string>
+    <string name="post_viewer_desc">Descripción del problema</string>
+    <string name="post_viewer_negative">-1</string>
+    <string name="post_viewer_positive">+1</string>
+    <string name="post_viewer_share">Compartir</string>
+    <string name="profile_name">Nombre del usuario</string>
+    <string name="profile_email">usuario@email.com</string>
+    <string name="profile_logout">Cerrar sesión</string>
+    <string name="mis_publicaciones_title">Mis publicaciones</string>
+    <string name="scan_title">Escanear código QR.</string>
+    <string name="scan_msg">Puedes utilizar el escáner para encontrar facilmente una publicación de nuestra aplicación mediante su código QR.</string>
+    <string name="scan_button">Abrir escáner</string>
+    <string name="qr_viewer_title">Aquí tienes el código QR.</string>
+    <string name="qr_viewer_msg">¡Compartelo con un familiar o un amigo para que pueda acceder facilmente a la publicación!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
