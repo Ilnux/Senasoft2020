@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -54,23 +55,37 @@ class CrearActivity : AppCompatActivity() {
             ) {
 
                 buttonPublicar.setOnClickListener {
-                    titulo = editTextNombre.text.toString()
-                    descripcion = editTextDescripcion.text.toString()
-                    categoria = categorias[position]
 
-                    val pref = PreferenceManager.getDefaultSharedPreferences(this@CrearActivity)
+                    if (editTextNombre.text.isEmpty()) {
+                        alerta("Titulo")
+                        editTextNombre.requestFocus()
+                    } else {
+                        if (editTextDescripcion.text.isEmpty()) {
+                            alerta("Descripcion")
+                            editTextDescripcion.requestFocus()
+                        }
+                    }
+
+                    if (editTextNombre.text.isNotEmpty() && editTextDescripcion.text.isNotEmpty()) {
+
+                        titulo = editTextNombre.text.toString()
+                        descripcion = editTextDescripcion.text.toString()
+                        categoria = categorias[position]
+                        val pref = PreferenceManager.getDefaultSharedPreferences(this@CrearActivity)
 
 
-                    db.collection("publicaciones").document().set(
-                        hashMapOf(
-                            "Titulo" to titulo,
-                            "Categoria" to categoria,
-                            "Descripcion" to descripcion,
-                            "Autor" to pref.getString("nombre", null),
-                            "Rate" to 0
+                        db.collection("publicaciones").document().set(
+                            hashMapOf(
+                                "Titulo" to titulo,
+                                "Categoria" to categoria,
+                                "Descripcion" to descripcion,
+                                "Autor" to pref.getString("nombre", null),
+                                "Rate" to 0
+                            )
                         )
-                    )
-                    intentMain()
+                        intentMain()
+
+                    }
 //                    val listaublicaciones = ArrayList<Publicaciones>()
 //                    db.collection("publicaciones").whereEqualTo("Categoria", "Movilidad").get().addOnSuccessListener {
 //                        for (documento in it){
@@ -98,19 +113,13 @@ class CrearActivity : AppCompatActivity() {
         finish()
     }
 
+    private fun alerta(mensaje: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Un momento")
+        builder.setMessage("Ingresar el campo $mensaje por favor")
+        builder.setPositiveButton("Ok", null)
+        val dialogo: AlertDialog = builder.create()
+        dialogo.show()
+    }
 
-//    fun obtenerContador(){
-//        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-//        val resultadoList = ArrayList<ListaRate>()
-//        db.collection("publicaciones")
-//            .whereEqualTo("Autor", "${pref.getString("correo", null)}").whereEqualTo("Categoria") .get()
-//            .addOnSuccessListener { resultado ->
-//                for (documento in resultado ){
-//                    val datos = documento.toObject(ListaRate::class.java)
-//                    resultadoList.add(datos)
-//                    Log.d("rate","${resultadoList[]}")
-//                }
-//
-//            }
-//    }
 }

@@ -62,52 +62,56 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/ic_seguidad"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                <ImageButton
+                    android:id="@+id/ic_seguridad"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_ripple"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_seguridad"
+                    android:tint="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/colorWhite" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/ic_movilidad"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@drawable/ic_ripple"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_movilidad"
+                    android:tint="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ic_seguidad"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/colorWhite" />
+                    app:layout_constraintStart_toEndOf="@+id/ic_seguridad"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/ic_ruido"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@drawable/ic_ripple"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_ruido"
+                    android:tint="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ic_movilidad"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/colorWhite" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/ic_basura"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@drawable/ic_ripple"
                     android:contentDescription="@string/img_default_desc"
                     android:src="@drawable/ic_bottom_basura"
+                    android:tint="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ic_ruido"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/colorWhite" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

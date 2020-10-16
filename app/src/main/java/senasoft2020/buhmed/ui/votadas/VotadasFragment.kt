@@ -2,6 +2,7 @@ package senasoft2020.buhmed.ui.votadas
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import senasoft2020.buhmed.Post
 import senasoft2020.buhmed.PostAdapter
 import senasoft2020.buhmed.R
+import com.google.firebase.firestore.FirebaseFirestore
 import senasoft2020.buhmed.VerPublicacionActivity
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class VotadasFragment : Fragment() {
+    val db = FirebaseFirestore.getInstance()
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,17 +39,37 @@ class VotadasFragment : Fragment() {
         }
     }
 
+    fun selector(p: Post): Int = p.Rate
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_votadas, container, false)
-        val postList = ArrayList<Post>()
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewVotadas)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        val adapter = PostAdapter(postList)
-        recyclerView.adapter = adapter
+        val postList = ArrayList<Post>()
+        db.collection("publicaciones").addSnapshotListener {snapshot, error ->
+            if (error != null) {
+                Log.e("error", "${error.message}")
+                return@addSnapshotListener
+            }
+            for (documentos in snapshot!!) {
+                val publicaciones = documentos.toObject(Post::class.java)
+                val myPost = Post()
+                myPost.Id = documentos.id
+                myPost.Autor = publicaciones.Autor
+                myPost.Categoria = publicaciones.Categoria
+                myPost.Descripcion = publicaciones.Descripcion
+                myPost.Rate = publicaciones.Rate
+                myPost.Titulo = publicaciones.Titulo
+                postList.add(myPost)
+            }
+            postList.sortByDescending({selector(it)})
+            val adapter = PostAdapter(postList)
+            recyclerView.adapter = adapter
+        }
         return view
     }
 
