@@ -26,6 +26,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        //Variable sesion
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        if (pref.getString("SESION",null).equals("IN")){
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
         val fontOpenSansRegular = Typeface.createFromAsset(assets, "fonts/Open-Sans-Regular.ttf")
         val fontOpenSansBold = Typeface.createFromAsset(assets, "fonts/Open-Sans-Bold.ttf")
         val fontOpenSansExtraBold =
@@ -79,6 +88,7 @@ class LoginActivity : AppCompatActivity() {
                 val pref = PreferenceManager.getDefaultSharedPreferences(this)
                 val guardar = pref.edit()
                 guardar.putString(PROVEEDOR, "huawei")
+                guardar.putString("SESION", "IN")
                 guardar.apply()
 
                 cambioAtividadH(cuenta)
@@ -97,6 +107,7 @@ class LoginActivity : AppCompatActivity() {
                 val pref = PreferenceManager.getDefaultSharedPreferences(this)
                 val guardar = pref.edit()
                 guardar.putString(PROVEEDOR, "google")
+                guardar.putString("SESION", "IN")
                 guardar.apply()
 
                 cambioAtividadG(cuenta)
