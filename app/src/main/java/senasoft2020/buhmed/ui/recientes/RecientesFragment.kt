@@ -1,13 +1,16 @@
 package senasoft2020.buhmed.ui.recientes
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,8 +34,6 @@ private const val ARG_PARAM2 = "param2"
  */
 
 class RecientesFragment : Fragment() {
-
-
     val db = FirebaseFirestore.getInstance()
 
     // TODO: Rename and change types of parameters
@@ -55,7 +56,8 @@ class RecientesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_recientes, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewRecientes)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        val postList = ArrayList<Post>()
+
+        var postList = ArrayList<Post>()
         db.collection("publicaciones").addSnapshotListener { snapshot, error ->
             if (error != null){
                 Log.e("error","${error.message}")
@@ -76,7 +78,117 @@ class RecientesFragment : Fragment() {
             recyclerView.adapter = adapter
             Log.d("documentos", "${postList}")
         }
+        val icSeguridad: ImageButton = view.findViewById(R.id.ic_seguridad)
+        icSeguridad.setOnClickListener {
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Seguridad").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
+        }
+        val icMovilidad: ImageButton = view.findViewById(R.id.ic_movilidad)
+        icMovilidad.setOnClickListener {
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Movilidad").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
+        }
+        val icRuido: ImageButton = view.findViewById(R.id.ic_ruido)
+        icRuido.setOnClickListener {
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Ruido").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
+        }
+        val icBasuras: ImageButton = view.findViewById(R.id.ic_basura)
+        icBasuras.setOnClickListener {
+            alerta("Integración de mapas de basura en desarrollo SenaSoft SENA 2020 (filtrando por categoría basura...)")
+            Toast.makeText(context, "Filtrando, por favor espere.", Toast.LENGTH_SHORT).show()
+            db.collection("publicaciones").whereEqualTo("Categoria", "Basuras").addSnapshotListener { snapshot, error ->
+                if (error != null){
+                    Log.e("error","${error.message}")
+                    return@addSnapshotListener
+                }
+                postList.clear()
+                for (documento in snapshot!!) {
+                    val publicaciones = documento.toObject(Post::class.java)
+                    val myPost = Post()
+                    myPost.Id = documento.id
+                    myPost.Autor = publicaciones.Autor
+                    myPost.Categoria = publicaciones.Categoria
+                    myPost.Descripcion = publicaciones.Descripcion
+                    myPost.Rate = publicaciones.Rate
+                    myPost.Titulo = publicaciones.Titulo
+                    postList.add(myPost)
+                }
+                Toast.makeText(context, "Hecho.", Toast.LENGTH_SHORT).show()
+                val adapter = PostAdapter(postList)
+                recyclerView.adapter = adapter
+            }
+        }
         return view
+    }
+
+    private fun alerta(mensaje: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Un momento")
+        builder.setMessage(mensaje)
+        builder.setPositiveButton("Ok", null)
+        val dialogo: AlertDialog = builder.create()
+        dialogo.show()
     }
 
     companion object {

@@ -23,8 +23,7 @@ android {
 
     signingConfigs {
         config {
-
-            storeFile file('C:\\AndroidStudioProjects\\Senasoft2020\\app\\key2.jks')
+            storeFile file('C:\\Users\\usuario\\Desktop\\Android\\BUHMED\\app\\key2.jks')
             storePassword '021094'
             keyPassword '021094'
             keyAlias 'key2'

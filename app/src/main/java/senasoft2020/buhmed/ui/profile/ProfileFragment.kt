@@ -1,13 +1,17 @@
 package senasoft2020.buhmed.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import kotlinx.android.synthetic.main.fragment_profile.*
+import senasoft2020.buhmed.LoginActivity
 import senasoft2020.buhmed.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,8 +48,30 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         val imgPicture: ImageView = view.findViewById(R.id.imageViewProfilePicture)
         imgPicture.clipToOutline = true
+        val btnCerraSesion: Button = view.findViewById(R.id.buttonLogOut)
+
+        val correo:TextView = view.findViewById(R.id.textViewEmail)
+        val nombre:TextView = view.findViewById(R.id.textViewNombre)
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(context)
+        nombre.text = pref.getString("nombre"," ")
+        correo.text = pref.getString("correo"," ")
+
+
+
+        btnCerraSesion.setOnClickListener {
+            val pref = PreferenceManager.getDefaultSharedPreferences(context)
+            val guardar = pref.edit()
+            guardar.putString("SESION", "OUT")
+            guardar.apply()
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
+        }
+
         return view
     }
+
 
     companion object {
         /**
